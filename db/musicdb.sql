@@ -153,57 +153,186 @@ CREATE TABLE SocialMedia
     ArtistID   INT REFERENCES Artist (ArtistID)
 );
 
-INSERT INTO Artist (ArtistID, LegalName, StageName, Age, Popularity, LabelID)
-VALUES (1, 'Abel Tesfaye', 'The Weeknd', 32, 90, 1);
+INSERT INTO Artist (ArtistID, LegalName, StageName, Age, Popularity, LabelID) VALUES
+(1, 'John Smith', 'J-Smith', 25, 0.7, 1),
+(2, 'Jane Doe', 'J-Doe', 30, 0.9, 2),
+(3, 'David Lee', 'D-Lee', 40, 0.6, 3),
+(4, 'Sarah Brown', 'S-Brown', 27, 0.8, 2),
+(5, 'Kevin Kim', 'K-Kim', 35, 0.5, 1);
 
-INSERT INTO Song (SongID, SongTitle, BPM, Danceability, Duration, NumStreams, ReleaseDate, AlbumID)
-VALUES (1, 'Blinding Lights', 171, 0.514, 200, 10000000, '2020-11-29', 1);
+INSERT INTO Song (SongID, SongTitle, BPM, Danceability, Duration, NumStreams, ReleaseDate, AlbumID) VALUES
+(1, 'Song A', 120, 0.8, 3.5, 1000000, '2020-01-01', 1),
+(2, 'Song B', 100, 0.6, 4.2, 800000, '2019-05-15', 2),
+(3, 'Song C', 140, 0.9, 2.8, 500000, '2021-02-28', 3),
+(4, 'Song D', 80, 0.5, 5.1, 1200000, '2018-10-10', 2),
+(5, 'Song E', 160, 0.7, 3.9, 900000, '2022-03-20', 1);
 
-INSERT INTO Album (AlbumID, AlbumTitle, ReleaseDate, NumTracks, Popularity)
-VALUES (1, 'After Hours', '2020-03-20', 14, 85.5);
+INSERT INTO Album (AlbumID, AlbumTitle, ReleaseDate, NumTracks, Popularity) VALUES
+(1, 'Album A', '2020-01-01', 10, 0.7),
+(2, 'Album B', '2019-05-15', 12, 0.9),
+(3, 'Album C', '2021-02-28', 8, 0.6),
+(4, 'Album D', '2018-10-10', 14, 0.8),
+(5, 'Album E', '2022-03-20', 9, 0.5);
 
-INSERT INTO Genre (GenreID, GenreName, Popularity)
-VALUES (1, 'R&B', 80);
+INSERT INTO Genre (GenreID, GenreName, Popularity) VALUES
+(1, 'Pop', 0.8),
+(2, 'Rock', 0.7),
+(3, 'Hip Hop', 0.6),
+(4, 'Country', 0.5),
+(5, 'Electronic', 0.4);
 
-INSERT INTO SongGenre (GenreID, SongID)
-VALUES (1, 1);
+INSERT INTO SongGenre (GenreID, SongID) VALUES
+(1, 1),
+(1, 2),
+(1, 4),
+(2, 2),
+(2, 4),
+(2, 5),
+(3, 1),
+(3, 3),
+(3, 4),
+(4, 1),
+(4, 3),
+(5, 2),
+(5, 5);
 
-INSERT INTO Chart (ChartID, ChartName)
-VALUES (1, 'Top 100');
+INSERT INTO Chart (ChartID, ChartName) VALUES
+(1, 'Billboard Hot 100'),
+(2, 'UK Top 40'),
+(3, 'Oricon');
 
-INSERT INTO SongChart (ChartID, SongID)
-VALUES (1, 1);
+INSERT INTO SongChart (ChartID, SongID) VALUES
+(1, 1),
+(1, 2),
+(1, 4),
+(2, 1),
+(2, 3),
+(2, 5),
+(3, 2),
+(3, 3),
+(3, 5);
 
-INSERT INTO Playlist (PlaylistID, PlaylistName, NumTracks, TotalListeningTime)
-VALUES (1, 'My Playlist', 10, 500);
+INSERT INTO Playlist (PlaylistID,
+PlaylistName, NumTracks, TotalListeningTime) VALUES
+(1, 'Workout Mix', 15, 45.2),
+(2, 'Relaxing Songs', 12, 36.8),
+(3, 'Driving Playlist', 20, 60.5),
+(4, 'Party Tunes', 25, 77.3),
+(5, 'Road Trip', 18, 53.2);
 
-INSERT INTO SongPlaylist (PlaylistID, SongID)
-VALUES (1, 1);
+INSERT INTO SongPlaylist (PlaylistID, SongID) VALUES
+(1, 1),
+(1, 3),
+(1, 5),
+(2, 2),
+(2, 4),
+(2, 5),
+(3, 1),
+(3, 2),
+(3, 3),
+(3, 4),
+(3, 5),
+(4, 1),
+(4, 2),
+(4, 3),
+(4, 4),
+(4, 5),
+(5, 1),
+(5, 3),
+(5, 4),
+(5, 5);
 
-INSERT INTO Tour (TourID, Name, DateAndTime)
-VALUES (1, 'After Hours Tour', '2022-01-01 20:00:00');
+INSERT INTO Tour (TourID, Name, DateAndTime) VALUES
+(1, 'World Tour 2022', '2022-06-15 20:00:00'),
+(2, 'Summer Tour 2023', '2023-07-01 18:30:00'),
+(3, 'Fall Tour 2024', '2024-10-01 19:00:00'),
+(4, 'Winter Tour 2025', '2025-12-15 21:00:00'),
+(5, 'Spring Tour 2026', '2026-04-01 17:30:00');
 
-INSERT INTO ArtistTour (TourID, ArtistID)
-VALUES (1, 1);
+INSERT INTO ArtistTour (TourID, ArtistID) VALUES
+(1, 1),
+(1, 2),
+(2, 2),
+(2, 3),
+(2, 4),
+(3, 1),
+(3, 5),
+(4, 2),
+(4, 4),
+(4, 5),
+(5, 1),
+(5, 3),
+(5, 4),
+(5, 5);
 
-INSERT INTO Region (RegionID, Name, Location, Continent, Country, State, City)
-VALUES (1, 'North America', 'Toronto', 'North America', 'Canada', 'Ontario', 'Toronto');
+INSERT INTO Region (RegionID, Name, Location, Continent, Country, State, City) VALUES
+(1, 'North America', 'NA', 'North America', 'United States', 'California', 'Los Angeles'),
+(2, 'South America', 'SA', 'South America', 'Brazil', 'São Paulo', 'São Paulo'),
+(3, 'Europe', 'EU', 'Europe', 'United Kingdom', 'England', 'London'),
+(4, 'Asia', 'AS', 'Asia', 'Japan', 'Tokyo', 'Tokyo'),
+(5, 'Oceania', 'OC', 'Oceania', 'Australia', 'New South Wales', 'Sydney');
 
-INSERT INTO Merchandise (MerchandiseID, MerchandiseName, MerchandiseType, Price)
-VALUES (1, 'After Hours T-Shirt', 'T-Shirt', 30.00);
+INSERT INTO TourRegion (TourID, RegionID) VALUES
+(1, 1),
+(1, 3),
+(2, 2),
+(2, 4),
+(3, 1),
+(3, 3),
+(3, 5),
+(4, 2),
+(4, 4),
+(4, 5),
+(5, 1),
+(5, 3),
+(5, 5);
 
-INSERT INTO MerchandiseArtist (MerchandiseID, ArtistID)
-VALUES (1, 1);
+INSERT INTO Merchandise (MerchandiseID, MerchandiseName, MerchandiseType, Price) VALUES
+(1, 'T-Shirt', 'Clothing', 20.99),
+(2, 'Cap', 'Accessories', 12.50),
+(3, 'CD', 'Music', 9.99),
+(4, 'Poster', 'Home Decor', 7.99),
+(5, 'Vinyl Record', 'Music', 24.99);
 
-INSERT INTO Label (LabelID, LabelName)
-VALUES (1, 'Republic Records');
+INSERT INTO MerchandiseArtist (MerchandiseID, ArtistID) VALUES
+(1, 1),
+(1, 2),
+(2, 2),
+(2, 4),
+(3, 1),
+(3, 3),
+(4, 2),
+(4, 5),
+(5, 1),
+(5, 4);
 
-INSERT INTO ArtistProducer (ArtistID, ProducerID)
-VALUES (1, 1);
+INSERT INTO Label (LabelID, LabelName) VALUES
+(1, 'Universal Music Group'),
+(2, 'Sony Music Entertainment'),
+(3, 'Warner Music Group'),
+(4, 'EMI'),
+(5, 'Atlantic Records');
 
-INSERT INTO Producer (ProducerID, ProducerName)
-VALUES (1, 'Max Martin');
+INSERT INTO ArtistProducer (ProducerID, ArtistID) VALUES
+(1, 1),
+(1, 2),
+(2, 3),
+(3, 1),
+(3, 4),
+(4, 2),
+(5, 5),
+(5, 3);
 
-INSERT INTO SocialMedia (Instagram, GenreID, Name, Popularity, ArtistID)
-VALUES ('@theweeknd', 1, 'The Weeknd', 95, 1);
+INSERT INTO Producer (ProducerID, ProducerName) VALUES
+(1, 'Max Martin'),
+(2, 'Dr. Luke'),
+(3, 'Timbaland'),
+(4, 'Rick Rubin'),
+(5, 'Calvin Harris');
 
+INSERT INTO SocialMedia (Instagram, Name, Popularity, GenreID, ArtistID) VALUES
+('j_smith', 'John Smith', 0.8, 1, 1),
+('j_doe', 'Jane Doe', 0.7, 2, 2),
+('d_lee', 'David Lee', 0.6, 3, 3),
+('s_brown', 'Sarah Brown', 0.5, 4, 4),
+('k_kim', 'Kevin Kim', 0.4, 5, 5);
