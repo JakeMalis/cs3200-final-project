@@ -383,6 +383,10 @@ INSERT INTO SongGenre (GenreID, SongID) VALUES
 (5, 2),
 (5, 5);
 
+INSERT INTO Chart (ChartID, ChartName) VALUES
+(1, 'Billboard Hot 100'),
+(2, 'UK Top 40'),
+(3, 'Oricon');
 
 INSERT INTO SongChart (ChartID, SongID) VALUES
 (1, 1),
