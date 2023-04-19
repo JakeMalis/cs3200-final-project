@@ -31,8 +31,11 @@ def create_app():
 
     # Import the various routes
     from src.song.songs import songs
+    from src.label.label import label
 
     # Register the routes that we just imported so they can be properly handled
     app.register_blueprint(songs,    url_prefix='/s')
+    app.register_blueprint(label,    url_prefix='/l')
+
 
     return app
