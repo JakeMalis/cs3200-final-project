@@ -116,3 +116,24 @@ def get_producer_artists():
         json_data.append(dict(zip(column_headers, row)))
 
     return jsonify(json_data)
+
+# get all merchandise from the database
+@label.route('/getAllMerchandise', methods=['GET'])
+def get_artists():
+    cursor = db.get_db().cursor()
+    cursor.execute('SELECT * FROM Merchandise')
+    row_headers = [x[0] for x in cursor.description]
+    json_data = []
+    theData = cursor.fetchall()
+    for row in theData:
+        json_data.append(dict(zip(row_headers, row)))
+    return jsonify(json_data)
+
+# delete merchandise from the db
+@label.route('/deleteMerch', methods=['DELETE'])
+def delete_artist():
+    cursor = db.get_db().cursor()
+    merchandise_id = request.args.get('merchandise_id')
+    cursor.execute('DELETE FROM Merchandise WHERE MerchandiseID=' + merchandise_id)
+    db.get_db().commit()
+    return 'Success'
