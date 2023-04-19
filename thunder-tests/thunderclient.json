@@ -446,11 +446,36 @@
     "colId": "2db59779-11ad-4bc2-9d94-65e312eaa891",
     "containerId": "",
     "name": "getToursInRegion",
-    "url": "localhost:8001/l/getRegionTours?country='United States'&state='California'",
+    "url": "localhost:8001/l/getRegionTours?country='Australia'&state='New South Wales'",
     "method": "GET",
     "sortNum": 30000,
     "created": "2023-04-19T06:37:05.837Z",
-    "modified": "2023-04-19T06:52:03.632Z",
+    "modified": "2023-04-19T07:00:14.350Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "country",
+        "value": "'Australia'",
+        "isPath": false
+      },
+      {
+        "name": "state",
+        "value": "'New South Wales'",
+        "isPath": false
+      }
+    ],
+    "tests": []
+  },
+  {
+    "_id": "b8bc7922-2ca0-4d27-8004-aafbddbaee87",
+    "colId": "2db59779-11ad-4bc2-9d94-65e312eaa891",
+    "containerId": "",
+    "name": "getToursInRegion2",
+    "url": "localhost:8001/l/getRegionTours?country='United States'&state='California'",
+    "method": "GET",
+    "sortNum": 40000,
+    "created": "2023-04-19T06:58:14.473Z",
+    "modified": "2023-04-19T06:58:14.473Z",
     "headers": [],
     "params": [
       {
@@ -461,6 +486,162 @@
       {
         "name": "state",
         "value": "'California'",
+        "isPath": false
+      }
+    ],
+    "tests": []
+  },
+  {
+    "_id": "666be221-25da-45ce-bcc9-8daec6192b8d",
+    "colId": "2db59779-11ad-4bc2-9d94-65e312eaa891",
+    "containerId": "",
+    "name": "addMerchandise",
+    "url": "localhost:8001/l/addMerch",
+    "method": "POST",
+    "sortNum": 40000,
+    "created": "2023-04-19T07:00:58.245Z",
+    "modified": "2023-04-19T07:01:52.230Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"MerchandiseID\":100,\n  \"MerchandiseName\": \"RohilToy\",\n  \"MerchandiseType\": \"T-Shirt\",\n  \"Price\": 1\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "69c04d8e-dccd-477a-b5de-04cbc5c0772c",
+    "colId": "2db59779-11ad-4bc2-9d94-65e312eaa891",
+    "containerId": "",
+    "name": "addMerchandise2",
+    "url": "localhost:8001/l/addMerch",
+    "method": "POST",
+    "sortNum": 50000,
+    "created": "2023-04-19T07:02:34.427Z",
+    "modified": "2023-04-19T07:02:50.805Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"MerchandiseID\":1001,\n  \"MerchandiseName\": \"KrishiToy\",\n  \"MerchandiseType\": \"Hoodie\",\n  \"Price\": 100\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "d6b416a9-dced-42fd-9ab6-591e743180ee",
+    "colId": "2db59779-11ad-4bc2-9d94-65e312eaa891",
+    "containerId": "",
+    "name": "updateLabel",
+    "url": "localhost:8001/l/updateLabel",
+    "method": "PUT",
+    "sortNum": 50000,
+    "created": "2023-04-19T07:03:46.243Z",
+    "modified": "2023-04-19T07:12:08.963Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "artist_name",
+        "value": "1",
+        "isDisabled": true,
+        "isPath": false
+      },
+      {
+        "name": "label_name",
+        "value": "1",
+        "isDisabled": true,
+        "isPath": false
+      }
+    ],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"artist_name\": \"'J-Smith'\",\n  \"label_name\": \"'Universal Music Group'\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "c2c170da-609a-40e2-868b-a57de1f68f7f",
+    "colId": "2db59779-11ad-4bc2-9d94-65e312eaa891",
+    "containerId": "",
+    "name": "updateLabel2",
+    "url": "localhost:8001/l/updateLabel",
+    "method": "PUT",
+    "sortNum": 60000,
+    "created": "2023-04-19T07:12:41.167Z",
+    "modified": "2023-04-19T07:13:41.591Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "artist_name",
+        "value": "1",
+        "isDisabled": true,
+        "isPath": false
+      },
+      {
+        "name": "label_name",
+        "value": "1",
+        "isDisabled": true,
+        "isPath": false
+      }
+    ],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"artist_name\": \"'J-Doe'\",\n  \"label_name\": \"'Warner Music Group'\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "eccbe951-5c70-425c-a7b1-796f95c97955",
+    "colId": "2db59779-11ad-4bc2-9d94-65e312eaa891",
+    "containerId": "",
+    "name": "get10MostPopularArtists",
+    "url": "localhost:8001/l/getPopularArtists",
+    "method": "GET",
+    "sortNum": 60000,
+    "created": "2023-04-19T07:14:33.971Z",
+    "modified": "2023-04-19T07:14:41.390Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "16338bf3-0878-468d-85a9-1e7ff0a5275d",
+    "colId": "2db59779-11ad-4bc2-9d94-65e312eaa891",
+    "containerId": "",
+    "name": "getArtistFromProducerName",
+    "url": "localhost:8001/l/getProducerArtists?producer_name='Max Martin'",
+    "method": "GET",
+    "sortNum": 70000,
+    "created": "2023-04-19T07:14:59.407Z",
+    "modified": "2023-04-19T07:15:49.717Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "producer_name",
+        "value": "'Max Martin'",
+        "isPath": false
+      }
+    ],
+    "tests": []
+  },
+  {
+    "_id": "62412ca1-f06b-475d-9e6e-b4603ab547bd",
+    "colId": "2db59779-11ad-4bc2-9d94-65e312eaa891",
+    "containerId": "",
+    "name": "getArtistFromProducerName2",
+    "url": "localhost:8001/l/getProducerArtists?producer_name='Timbaland'",
+    "method": "GET",
+    "sortNum": 80000,
+    "created": "2023-04-19T07:15:53.074Z",
+    "modified": "2023-04-19T07:16:04.972Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "producer_name",
+        "value": "'Timbaland'",
         "isPath": false
       }
     ],
