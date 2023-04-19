@@ -646,5 +646,39 @@
       }
     ],
     "tests": []
+  },
+  {
+    "_id": "4bc6552f-d0a8-4e5d-aff4-2f49c4e2ab16",
+    "colId": "2db59779-11ad-4bc2-9d94-65e312eaa891",
+    "containerId": "",
+    "name": "getMerchandise",
+    "url": "localhost:8001/l/getAllMerchandise",
+    "method": "GET",
+    "sortNum": 90000,
+    "created": "2023-04-19T07:31:59.436Z",
+    "modified": "2023-04-19T07:32:14.100Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "0b12e59e-0dcf-4d28-b00c-51272770e16b",
+    "colId": "2db59779-11ad-4bc2-9d94-65e312eaa891",
+    "containerId": "",
+    "name": "deleteMerchandise",
+    "url": "localhost:8001/l/deleteMerch?merchandise_id=1",
+    "method": "DELETE",
+    "sortNum": 100000,
+    "created": "2023-04-19T07:34:03.570Z",
+    "modified": "2023-04-19T07:34:49.358Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "merchandise_id",
+        "value": "1",
+        "isPath": false
+      }
+    ],
+    "tests": []
   }
 ]

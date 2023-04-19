@@ -119,7 +119,7 @@ def get_producer_artists():
 
 # get all merchandise from the database
 @label.route('/getAllMerchandise', methods=['GET'])
-def get_artists():
+def get_merch():
     cursor = db.get_db().cursor()
     cursor.execute('SELECT * FROM Merchandise')
     row_headers = [x[0] for x in cursor.description]
@@ -131,7 +131,7 @@ def get_artists():
 
 # delete merchandise from the db
 @label.route('/deleteMerch', methods=['DELETE'])
-def delete_artist():
+def delete_merch():
     cursor = db.get_db().cursor()
     merchandise_id = request.args.get('merchandise_id')
     cursor.execute('DELETE FROM Merchandise WHERE MerchandiseID=' + merchandise_id)
