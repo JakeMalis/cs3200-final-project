@@ -16,6 +16,26 @@ def get_artists():
         json_data.append(dict(zip(row_headers, row)))
     return jsonify(json_data)
 
+@label.route('/getArtistDetails', methods=['GET'])
+def get_artist_by_artistID():
+    cursor = db.get_db().cursor()
+    artistID = request.args.get('artist_id')
+    query = '''
+select * from Artist 
+         where ArtistID =
+'''
+    query += str(artistID)
+
+    cursor.execute(query)
+    column_headers = [x[0] for x in cursor.description]
+    json_data = []
+    theData = cursor.fetchall()
+    for row in theData:
+        json_data.append(dict(zip(column_headers, row)))
+
+    return jsonify(json_data)
+
+
 # Get all tours in a Country and State
 @label.route('/getRegionTours', methods=['GET'])
 def get_region_tours():
@@ -24,7 +44,7 @@ def get_region_tours():
 
     cursor = db.get_db().cursor()
     query = '''
-        SELECT Name, DateAndTime
+        SELECT t.Name, DateAndTime
         FROM Tour t
             JOIN TourRegion tr on t.TourID = tr.TourID
             JOIN Region r on tr.RegionID = r.RegionID
@@ -34,7 +54,6 @@ def get_region_tours():
     query += "        and State = "
     query += state
     query += "        order by DateAndTime"
-
 
     cursor.execute(query)
     row_headers = [x[0] for x in cursor.description]
@@ -49,7 +68,7 @@ def get_region_tours():
 def add_merch():
     data = request.get_json()
     cursor = db.get_db().cursor()
-    cursor.execute('INSERT INTO Merch (MerchandiseID, MerchandiseName, MerchandiseType, Price) \
+    cursor.execute('INSERT INTO Merchandise (MerchandiseID, MerchandiseName, MerchandiseType, Price) \
                     VALUES (%s, %s, %s, %s, %s)', 
                     (data['MerchandiseID'], data['MerchandiseName'], data['MerchandiseType'], data['Price']))
     db.get_db().commit()
@@ -77,6 +96,7 @@ def update_artist():
     db.get_db().commit()
     return 'Success'
 
+# get top 10 most popular artists
 @label.route('/getPopularArtists', methods=['GET'])
 def get_most_pop_artist():
     cursor = db.get_db().cursor()
@@ -95,6 +115,7 @@ def get_most_pop_artist():
 
     return jsonify(json_data)
 
+# get all artists that work with the given producer
 @label.route('/getProducerArtists', methods=['GET'])
 def get_producer_artists():
     cursor = db.get_db().cursor()
@@ -116,3 +137,24 @@ def get_producer_artists():
         json_data.append(dict(zip(column_headers, row)))
 
     return jsonify(json_data)
+
+# get all merchandise from the database
+@label.route('/getAllMerchandise', methods=['GET'])
+def get_artists():
+    cursor = db.get_db().cursor()
+    cursor.execute('SELECT * FROM Merchandise')
+    row_headers = [x[0] for x in cursor.description]
+    json_data = []
+    theData = cursor.fetchall()
+    for row in theData:
+        json_data.append(dict(zip(row_headers, row)))
+    return jsonify(json_data)
+
+# delete merchandise from the db
+@label.route('/deleteMerch', methods=['DELETE'])
+def delete_artist():
+    cursor = db.get_db().cursor()
+    merchandise_id = request.args.get('merchandise_id')
+    cursor.execute('DELETE FROM Merchandise WHERE MerchandiseID=' + merchandise_id)
+    db.get_db().commit()
+    return 'Success'
