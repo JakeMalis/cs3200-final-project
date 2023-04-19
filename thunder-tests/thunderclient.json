@@ -680,5 +680,25 @@
       }
     ],
     "tests": []
+  },
+  {
+    "_id": "120c514f-cdae-4a53-b299-d295adba4173",
+    "colId": "2db59779-11ad-4bc2-9d94-65e312eaa891",
+    "containerId": "",
+    "name": "deleteMerchandise2",
+    "url": "localhost:8001/l/deleteMerch?merchandise_id=2",
+    "method": "DELETE",
+    "sortNum": 110000,
+    "created": "2023-04-19T07:36:02.328Z",
+    "modified": "2023-04-19T07:36:09.676Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "merchandise_id",
+        "value": "2",
+        "isPath": false
+      }
+    ],
+    "tests": []
   }
 ]
