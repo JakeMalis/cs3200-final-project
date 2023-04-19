@@ -30,9 +30,9 @@ def create_app():
         return "<h1>Welcome to the 3200 boilerplate app!!</h1>"
 
     # Import the various routes
-    from src.artist.artists import artists
+    from src.song.songs import songs
 
     # Register the routes that we just imported so they can be properly handled
-    app.register_blueprint(artists,    url_prefix='/a')
+    app.register_blueprint(songs,    url_prefix='/s')
 
     return app

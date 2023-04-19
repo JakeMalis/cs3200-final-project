@@ -1,44 +1,430 @@
 [
   {
-    "_id": "88175af4-17b2-4389-abdd-eaae3b1c72a5",
-    "colId": "cd143d75-fd2b-4039-a514-cd7a5005de02",
+    "_id": "9c071aa4-52df-453a-aafe-f10f29a1fcf5",
+    "colId": "1d4a1d06-449f-4ce1-aad6-647e8abc7623",
     "containerId": "",
-    "name": "GET /",
-    "url": "localhost:8001/",
+    "name": "getAllSongs",
+    "url": "localhost:8001/s/getAllSongs",
     "method": "GET",
     "sortNum": 10000,
-    "created": "2023-03-29T12:09:19.195Z",
-    "modified": "2023-03-29T12:10:39.391Z",
+    "created": "2023-04-19T03:37:04.900Z",
+    "modified": "2023-04-19T03:37:08.238Z",
     "headers": [],
     "params": [],
     "tests": []
   },
   {
-    "_id": "9353a5d5-9e5c-46d6-b473-584da0370f4c",
-    "colId": "cd143d75-fd2b-4039-a514-cd7a5005de02",
+    "_id": "28f95eda-3e31-4bd4-b7c0-ea9f0c9ed515",
+    "colId": "1d4a1d06-449f-4ce1-aad6-647e8abc7623",
     "containerId": "",
-    "name": "GET Customers",
-    "url": "localhost:8001/c/customers",
+    "name": "getSongByID",
+    "url": "localhost:8001/s/getSong?song_id=1",
     "method": "GET",
     "sortNum": 20000,
-    "created": "2023-03-29T12:12:14.723Z",
-    "modified": "2023-03-29T12:12:24.417Z",
+    "created": "2023-04-19T03:40:14.973Z",
+    "modified": "2023-04-19T03:49:11.336Z",
     "headers": [],
-    "params": [],
+    "params": [
+      {
+        "name": "song_id",
+        "value": "1",
+        "isPath": false
+      }
+    ],
     "tests": []
   },
   {
-    "_id": "cc8bc863-0411-4b92-bafd-af353df3b23b",
-    "colId": "cd143d75-fd2b-4039-a514-cd7a5005de02",
+    "_id": "c85d3c9a-519a-4d9f-b459-26f65cfca742",
+    "colId": "1d4a1d06-449f-4ce1-aad6-647e8abc7623",
     "containerId": "",
-    "name": "GET Most Expensive Products",
-    "url": "localhost:8001/p/mostExpensive",
+    "name": "Top10SongsByGenre",
+    "url": "localhost:8001/s/mostStreamed?genre_name='Pop'",
     "method": "GET",
     "sortNum": 30000,
-    "created": "2023-03-29T12:13:28.581Z",
-    "modified": "2023-03-29T12:13:48.326Z",
+    "created": "2023-04-19T03:50:40.450Z",
+    "modified": "2023-04-19T06:06:12.393Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "genre_name",
+        "value": "'Pop'",
+        "isPath": false
+      }
+    ],
+    "tests": []
+  },
+  {
+    "_id": "02c4ff44-22ab-49dc-b273-f378801abfd5",
+    "colId": "1d4a1d06-449f-4ce1-aad6-647e8abc7623",
+    "containerId": "",
+    "name": "getSongsInChart",
+    "url": "localhost:8001/s/getChartSongs?chart_name='Oricon'",
+    "method": "GET",
+    "sortNum": 40000,
+    "created": "2023-04-19T03:52:51.623Z",
+    "modified": "2023-04-19T03:53:11.703Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "chart_name",
+        "value": "'Oricon'",
+        "isPath": false
+      }
+    ],
+    "tests": []
+  },
+  {
+    "_id": "b7761eff-aa12-4408-aee7-19fa569c2ce3",
+    "colId": "1d4a1d06-449f-4ce1-aad6-647e8abc7623",
+    "containerId": "",
+    "name": "getAllSongsInPlaylist",
+    "url": "localhost:8001/s/getPlaylistSongs?playlist_name='Workout Mix'",
+    "method": "GET",
+    "sortNum": 50000,
+    "created": "2023-04-19T03:54:47.143Z",
+    "modified": "2023-04-19T03:55:05.801Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "playlist_name",
+        "value": "'Workout Mix'",
+        "isPath": false
+      }
+    ],
+    "tests": []
+  },
+  {
+    "_id": "8294c634-b22e-47d1-8cdc-9fb78e9e4eed",
+    "colId": "1d4a1d06-449f-4ce1-aad6-647e8abc7623",
+    "containerId": "",
+    "name": "addNewArtist",
+    "url": "localhost:8001/s/addArtist",
+    "method": "POST",
+    "sortNum": 60000,
+    "created": "2023-04-19T03:57:18.070Z",
+    "modified": "2023-04-19T04:00:59.871Z",
     "headers": [],
     "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n\"ArtistID\": 100, \n\"LegalName\": \"Anisha\", \n\"StageName\": \"Anish\", \n\"Age\": 20, \n\"Popularity\": 0, \n\"LabelID\": 1\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "66709711-0f8d-4655-8c6b-3080d1e1c843",
+    "colId": "1d4a1d06-449f-4ce1-aad6-647e8abc7623",
+    "containerId": "",
+    "name": "addNewSong",
+    "url": "localhost:8001/s/addSong",
+    "method": "POST",
+    "sortNum": 70000,
+    "created": "2023-04-19T04:02:42.403Z",
+    "modified": "2023-04-19T04:16:08.427Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n\"SongID\": 100,\n\"SongTitle\": \"anish\",\n\"BPM\": 10,\n\"Danceability\": 10,\n\"Duration\": 100,\n\"NumStreams\": 200,\n\"ReleaseDate\": \"1/2/3\",\n\"AlbumID\": 10\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "bb14d768-52f8-4648-a22d-b91cd3c95a99",
+    "colId": "1d4a1d06-449f-4ce1-aad6-647e8abc7623",
+    "containerId": "",
+    "name": "deleteArtistByID",
+    "url": "localhost:8001/s/deleteArtist?artist_id=100",
+    "method": "DELETE",
+    "sortNum": 80000,
+    "created": "2023-04-19T04:18:04.754Z",
+    "modified": "2023-04-19T04:19:40.307Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "artist_id",
+        "value": "100",
+        "isPath": false
+      }
+    ],
+    "tests": []
+  },
+  {
+    "_id": "42354fc0-b082-48dc-ab56-7e79766a1a53",
+    "colId": "1d4a1d06-449f-4ce1-aad6-647e8abc7623",
+    "containerId": "",
+    "name": "deleteSongByID",
+    "url": "localhost:8001/s/deleteSong?song_id=100",
+    "method": "DELETE",
+    "sortNum": 90000,
+    "created": "2023-04-19T04:20:46.903Z",
+    "modified": "2023-04-19T04:22:00.935Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "song_id",
+        "value": "100",
+        "isPath": false
+      }
+    ],
+    "tests": []
+  },
+  {
+    "_id": "4f64edf7-628e-499f-98e8-7ece1f880549",
+    "colId": "1d4a1d06-449f-4ce1-aad6-647e8abc7623",
+    "containerId": "",
+    "name": "addSongToPlaylist",
+    "url": "localhost:8001/s/addNewSongToPlaylist?song_id=1&playlist_id=1",
+    "method": "PUT",
+    "sortNum": 100000,
+    "created": "2023-04-19T04:24:37.562Z",
+    "modified": "2023-04-19T05:54:29.531Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "song_id",
+        "value": "1",
+        "isPath": false
+      },
+      {
+        "name": "playlist_id",
+        "value": "1",
+        "isPath": false
+      }
+    ],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"song_id\": 4, \n  \"playlist_id\": 1\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "e2771402-f8ec-4b7d-8910-eb43e2eaef5d",
+    "colId": "1d4a1d06-449f-4ce1-aad6-647e8abc7623",
+    "containerId": "",
+    "name": "updateArtistByID1",
+    "url": "localhost:8001/s/updateArtist",
+    "method": "PUT",
+    "sortNum": 110000,
+    "created": "2023-04-19T05:56:38.827Z",
+    "modified": "2023-04-19T05:59:42.109Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"Age\": 25,\n  \"artistID\": 1\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "8fab7053-bb94-450a-8b7f-6f5d02d75aa2",
+    "colId": "1d4a1d06-449f-4ce1-aad6-647e8abc7623",
+    "containerId": "",
+    "name": "updateArtistByID2",
+    "url": "localhost:8001/s/updateArtist",
+    "method": "PUT",
+    "sortNum": 120000,
+    "created": "2023-04-19T06:01:02.980Z",
+    "modified": "2023-04-19T06:01:28.077Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"Age\": 25,\n  \"artistID\": 4\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "65bc17e5-e8bb-4b4f-a3e1-79343a0b50d9",
+    "colId": "1d4a1d06-449f-4ce1-aad6-647e8abc7623",
+    "containerId": "",
+    "name": "addSongToPlaylist2",
+    "url": "localhost:8001/s/addNewSongToPlaylist?song_id=1&playlist_id=1",
+    "method": "PUT",
+    "sortNum": 105000,
+    "created": "2023-04-19T06:01:35.390Z",
+    "modified": "2023-04-19T06:02:07.907Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "song_id",
+        "value": "1",
+        "isPath": false
+      },
+      {
+        "name": "playlist_id",
+        "value": "1",
+        "isPath": false
+      }
+    ],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"song_id\": 2, \n  \"playlist_id\": 5\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "571b8fdd-d7db-43e4-bf9d-d18df9a25ec5",
+    "colId": "1d4a1d06-449f-4ce1-aad6-647e8abc7623",
+    "containerId": "",
+    "name": "deleteSongByID2",
+    "url": "localhost:8001/s/deleteSong?song_id=100",
+    "method": "DELETE",
+    "sortNum": 95000,
+    "created": "2023-04-19T06:02:15.236Z",
+    "modified": "2023-04-19T06:02:15.236Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "song_id",
+        "value": "100",
+        "isPath": false
+      }
+    ],
+    "tests": []
+  },
+  {
+    "_id": "2a0fdb97-60da-4dee-9b1e-5359c2068a49",
+    "colId": "1d4a1d06-449f-4ce1-aad6-647e8abc7623",
+    "containerId": "",
+    "name": "deleteArtistByID2",
+    "url": "localhost:8001/s/deleteArtist?artist_id=100",
+    "method": "DELETE",
+    "sortNum": 85000,
+    "created": "2023-04-19T06:02:28.738Z",
+    "modified": "2023-04-19T06:02:28.738Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "artist_id",
+        "value": "100",
+        "isPath": false
+      }
+    ],
+    "tests": []
+  },
+  {
+    "_id": "d19ea699-756d-4592-97f0-95fcdac23fb4",
+    "colId": "1d4a1d06-449f-4ce1-aad6-647e8abc7623",
+    "containerId": "",
+    "name": "addNewSong2",
+    "url": "localhost:8001/s/addSong",
+    "method": "POST",
+    "sortNum": 75000,
+    "created": "2023-04-19T06:02:44.254Z",
+    "modified": "2023-04-19T06:03:23.117Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n\"SongID\": 10,\n\"SongTitle\": \"Bleater\",\n\"BPM\": 100,\n\"Danceability\": 100,\n\"Duration\": 290,\n\"NumStreams\": 8000,\n\"ReleaseDate\": \"7/12/5\",\n\"AlbumID\": 120\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "2dec551a-7c1c-4774-af4d-7f21d0e0a4eb",
+    "colId": "1d4a1d06-449f-4ce1-aad6-647e8abc7623",
+    "containerId": "",
+    "name": "addNewArtist2",
+    "url": "localhost:8001/s/addArtist",
+    "method": "POST",
+    "sortNum": 65000,
+    "created": "2023-04-19T06:03:26.552Z",
+    "modified": "2023-04-19T06:03:46.610Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n\"ArtistID\": 1005, \n\"LegalName\": \"Rohil\", \n\"StageName\": \"King\", \n\"Age\": 20, \n\"Popularity\": 100, \n\"LabelID\": 5\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "5fd75775-27c9-494b-819d-2c83110e138c",
+    "colId": "1d4a1d06-449f-4ce1-aad6-647e8abc7623",
+    "containerId": "",
+    "name": "getAllSongsInPlaylist2",
+    "url": "localhost:8001/s/getPlaylistSongs?playlist_name='Relaxing Songs'",
+    "method": "GET",
+    "sortNum": 55000,
+    "created": "2023-04-19T06:03:50.929Z",
+    "modified": "2023-04-19T06:04:49.568Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "playlist_name",
+        "value": "'Relaxing Songs'",
+        "isPath": false
+      }
+    ],
+    "tests": []
+  },
+  {
+    "_id": "2ad0fd98-3f24-44a1-8c2c-37b8ca63acf3",
+    "colId": "1d4a1d06-449f-4ce1-aad6-647e8abc7623",
+    "containerId": "",
+    "name": "getSongsInChart2",
+    "url": "localhost:8001/s/getChartSongs?chart_name='UK Top 40'",
+    "method": "GET",
+    "sortNum": 45000,
+    "created": "2023-04-19T06:04:54.528Z",
+    "modified": "2023-04-19T06:05:33.110Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "chart_name",
+        "value": "'UK Top 40'",
+        "isPath": false
+      }
+    ],
+    "tests": []
+  },
+  {
+    "_id": "93410357-c09b-46ab-a794-a60b4a83dffe",
+    "colId": "1d4a1d06-449f-4ce1-aad6-647e8abc7623",
+    "containerId": "",
+    "name": "Top10SongsByGenre2",
+    "url": "localhost:8001/s/mostStreamed?genre_name='Country'",
+    "method": "GET",
+    "sortNum": 35000,
+    "created": "2023-04-19T06:06:16.963Z",
+    "modified": "2023-04-19T06:06:27.254Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "genre_name",
+        "value": "'Country'",
+        "isPath": false
+      }
+    ],
+    "tests": []
+  },
+  {
+    "_id": "f95da947-2b55-478d-8783-e68d084052e1",
+    "colId": "1d4a1d06-449f-4ce1-aad6-647e8abc7623",
+    "containerId": "",
+    "name": "getSongByID2",
+    "url": "localhost:8001/s/getSong?song_id=1",
+    "method": "GET",
+    "sortNum": 25000,
+    "created": "2023-04-19T06:07:12.486Z",
+    "modified": "2023-04-19T06:07:12.486Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "song_id",
+        "value": "1",
+        "isPath": false
+      }
+    ],
     "tests": []
   }
 ]

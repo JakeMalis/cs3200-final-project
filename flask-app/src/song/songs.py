@@ -1,20 +1,19 @@
 from flask import Blueprint, request, jsonify, make_response, current_app
 import json
 from src import db
+from datetime import datetime
 
-artists = Blueprint('artists', __name__)
-
-
-## ------------------------------------ GET METHODS ------------------------------------------------------------------------------------
+songs = Blueprint('songs', __name__)
 
 
-## ------------------------------------ Working in Artist METHODS ------------------------------------------------------------------------------------
+## ------------------------------------ GET METHODS ------------------------------------------------------------------------------------------------
+## ------------------------------------ Working in Song METHODS ------------------------------------------------------------------------------------
 
-# Get all artists from the DB -- WORKING !
-@artists.route('/getAllArtists', methods=['GET'])
-def get_artists():
+# Get all songs from the database
+@songs.route('/getAllSongs', methods=['GET'])
+def get_all_songs():
     cursor = db.get_db().cursor()
-    cursor.execute('SELECT * FROM Artist')
+    cursor.execute('SELECT * FROM Song')
     row_headers = [x[0] for x in cursor.description]
     json_data = []
     theData = cursor.fetchall()
@@ -22,25 +21,37 @@ def get_artists():
         json_data.append(dict(zip(row_headers, row)))
     return jsonify(json_data)
 
-# Get artist detail for artist with particular artistID
-@artists.route('/Getartists/<artistID>', methods=['GET'])
-def get_artist(artistID):
+# Get Song details for a song with a particular SongID
+@songs.route('/getSong', methods=['GET'])
+def get_song_by_songId():
     cursor = db.get_db().cursor()
-    cursor.execute('SELECT * FROM Artist WHERE ArtistID = {0}'.format(artistID))
-    row_headers = [x[0] for x in cursor.description]
+    songID = request.args.get('song_id')
+    query = '''
+select * from Song 
+         where SongID =
+'''
+    query += str(songID)
+
+    cursor.execute(query)
+       # grab the column headers from the returned data
+    column_headers = [x[0] for x in cursor.description]
+
+    # create an empty dictionary object to use in 
+    # putting column headers together with data
     json_data = []
+
+    # fetch all the data from the cursor
     theData = cursor.fetchall()
+
+    # for each of the rows, zip the data elements together with
+    # the column headers. 
     for row in theData:
-        json_data.append(dict(zip(row_headers, row)))
-    the_response = make_response(jsonify(json_data))
-    the_response.status_code = 200
-    the_response.mimetype = 'application/json'
-    return the_response
+        json_data.append(dict(zip(column_headers, row)))
 
-## ------------------------------------ Working in Song METHODS ------------------------------------------------------------------------------------
+    return jsonify(json_data)
 
-    # get the top 10 songs from a genre -- working - surround the thunderclient var in ''
-@artists.route('/mostStreamed', methods=['GET'])
+# get the top 10 songs from a genre
+@songs.route('/mostStreamed', methods=['GET'])
 def get_most_pop_songs():
     cursor = db.get_db().cursor()
     genre_name = request.args.get('genre_name')
@@ -52,6 +63,9 @@ def get_most_pop_songs():
         WHERE GenreName = 
     '''
     query += str(genre_name)
+
+    query += "        order by NumStreams DESC" + "\nlimit 10"
+
     cursor.execute(query)
        # grab the column headers from the returned data
     column_headers = [x[0] for x in cursor.description]
@@ -73,8 +87,8 @@ def get_most_pop_songs():
 
 ## ------------------------------------ Working in Chart METHODS ------------------------------------------------------------------------------------
 
-# Get all the songs in a given chart -- working 
-@artists.route('/getChartSongs', methods=['GET'])
+# Get all the songs in a given chart
+@songs.route('/getChartSongs', methods=['GET'])
 def get_songs_chart():
     cursor = db.get_db().cursor()
     chart_name = request.args.get('chart_name')
@@ -108,10 +122,11 @@ Select SongTitle
 
 ## ------------------------------------ Working in playlist METHODS ------------------------------------------------------------------------------------
 
-# Get all songs from a given playlist -- working but hard coded
-@artists.route('/getPlaylistSongs', methods=['GET'])
+# Get all songs from a given playlist
+@songs.route('/getPlaylistSongs', methods=['GET'])
 def get_songs_playlist():
     cursor = db.get_db().cursor()
+    playlist_name = request.args.get('playlist_name')
     query = '''
         Select SongTitle
         FROM Song s
@@ -119,7 +134,7 @@ def get_songs_playlist():
             JOIN Playlist p on sp.PlaylistID = p.PlaylistID
         WHERE PlaylistName =
 '''
-    query += "'Relaxing Songs'"
+    query += str(playlist_name)
 
     cursor.execute(query)
        # grab the column headers from the returned data
@@ -144,47 +159,24 @@ def get_songs_playlist():
 ## ------------------------------------ POST METHODS ------------------------------------------------------------------------------------
 
 # Add new artist to the DB -- working
-@artists.route('/Addartist', methods=['POST'])
+@songs.route('/addArtist', methods=['POST'])
 def add_artist():
     data = request.get_json()
     cursor = db.get_db().cursor()
     cursor.execute('INSERT INTO Artist (ArtistID, LegalName, StageName, Age, Popularity, LabelID) \
-                    VALUES (%s, %s, %s, %s, %s)', 
-                    (data['ArtistID'], data['LegalName'], data['StageName'], data['Age'], data['Popularity'], data[LabelID]))
+                    VALUES (%s, %s, %s, %s, %s, %s)', 
+                    (data['ArtistID'], data['LegalName'], data['StageName'], data['Age'], data['Popularity'], data['LabelID']))
     db.get_db().commit()
     return 'Success'
 
 # add new song
-@artists.route('/newSong', methods=['POST'])
+@songs.route('/addSong', methods=['POST'])
 def add_new_song():
-    the_data = request.json #request is the object created when this code is executed
-    current_app.logger.info(the_data)
-
-    # fields in app smith need to be named the exact same way in order for extraction to work
-    id_number = the_data['song_id']
-    title = the_data['song_title']
-    bpm = the_data['song_bpm']
-    danceability = the_data['song_danceability']
-    duration = the_data['song_duration']
-    num_streams = the_data['song_num_streams']
-    release_date = the_data['song_release_date']
-    albumID = the_data['song_album_id']
-
-
-    query = 'insert into songs (SongID, SongTitle, BPM, Danceability, Duration, NumStreams, Release Date, AlbumID) values ("'
-    query += id_number + '", "'
-    query += title + '", '
-    query += str(bpm) + ')'
-    query += str(danceability) + ')'
-    query += str(duration) + ')'
-    query += str(num_streams) + ')'
-    query += convert(varchar, release_date, 101) + '", '
-    query += str(albumID) + ')'
-
-    current_app.logger.info(query)
-
+    data = request.get_json()
     cursor = db.get_db().cursor()
-    cursor.execute(query)
+    cursor.execute('INSERT INTO Song (SongID, SongTitle, BPM, Danceability, Duration, NumStreams, ReleaseDate, AlbumID) \
+                    VALUES (%s, %s, %s, %s, %s, %s, %s, %s)', 
+                    (data['SongID'], data['SongTitle'], data['BPM'], data['Danceability'], data['Duration'], data['NumStreams'], data['ReleaseDate'], data['AlbumID'] ))
     db.get_db().commit()
 
     return 'Success!'
@@ -195,21 +187,21 @@ def add_new_song():
 ## ------------------------------------ PUT METHODS ------------------------------------------------------------------------------------
 
 # Update an existing artist in the DB
-@artists.route('/artists/<artistID>', methods=['PUT'])
-def update_artist(artistID):
+@songs.route('/updateArtist', methods=['PUT'])
+def update_artist():
     data = request.get_json()
     cursor = db.get_db().cursor()
-    cursor.execute('UPDATE artist SET LegalName=%s, StageName=%s, Age=%s, Region=%s, Popularity=%s, NumberOfStreams=%s \
+    cursor.execute('UPDATE Artist SET Age=%s \
                     WHERE ArtistID=%s',
-                    (data['LegalName'], data['StageName'], data['Age'], data['Region'], data['Popularity'], data['NumberOfStreams'], artistID))
+                    (data['Age'], data['artistID']))
     db.get_db().commit()
     return 'Success'
 
 
 # Add a new song to a specified playlist -- WORKING but hard coded
-@artists.route('/addNewSongToPlaylist', methods=['PUT'])
+@songs.route('/addNewSongToPlaylist', methods=['PUT'])
 def add_new_song_to_playlist():
-    the_data = request.json #request is the object created when this code is executed
+    the_data = request.json
     current_app.logger.info(the_data)
 
     # fields in app smith need to be named the exact same way in order for extraction to work
@@ -243,17 +235,19 @@ def add_new_song_to_playlist():
 ## ------------------------------------ DELETE METHODS ------------------------------------------------------------------------------------
 
 # Delete an artist from the DB -- working but codwd
-@artists.route('/DeleteArtist', methods=['DELETE'])
+@songs.route('/deleteArtist', methods=['DELETE'])
 def delete_artist():
     cursor = db.get_db().cursor()
-    cursor.execute('DELETE FROM Artist WHERE ArtistID=102031')
+    artist_id = request.args.get('artist_id')
+    cursor.execute('DELETE FROM Artist WHERE ArtistID=' + artist_id)
     db.get_db().commit()
     return 'Success'
 
 # Delete an artist from the DB -- working but hard coded
-@artists.route('/DeleteSong', methods=['DELETE'])
+@songs.route('/deleteSong', methods=['DELETE'])
 def delete_song():
     cursor = db.get_db().cursor()
-    cursor.execute('DELETE FROM Song WHERE SongID=102031')
+    song_id = request.args.get('song_id')
+    cursor.execute('DELETE FROM Song WHERE SongID=' + song_id)
     db.get_db().commit()
     return 'Success'
