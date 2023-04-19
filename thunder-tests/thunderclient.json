@@ -426,5 +426,44 @@
       }
     ],
     "tests": []
+  },
+  {
+    "_id": "22baaddc-ca92-42c8-9a56-cecfab80d824",
+    "colId": "2db59779-11ad-4bc2-9d94-65e312eaa891",
+    "containerId": "",
+    "name": "getAllArtists",
+    "url": "localhost:8001/l/getAllArtists",
+    "method": "GET",
+    "sortNum": 20000,
+    "created": "2023-04-19T06:36:36.256Z",
+    "modified": "2023-04-19T06:36:44.351Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "4f7d7025-eeb6-4d89-8273-5e72cf1a8d71",
+    "colId": "2db59779-11ad-4bc2-9d94-65e312eaa891",
+    "containerId": "",
+    "name": "getToursInRegion",
+    "url": "localhost:8001/l/getRegionTours?country='United States'&state='California'",
+    "method": "GET",
+    "sortNum": 30000,
+    "created": "2023-04-19T06:37:05.837Z",
+    "modified": "2023-04-19T06:52:03.632Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "country",
+        "value": "'United States'",
+        "isPath": false
+      },
+      {
+        "name": "state",
+        "value": "'California'",
+        "isPath": false
+      }
+    ],
+    "tests": []
   }
 ]
