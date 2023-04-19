@@ -11,7 +11,7 @@ artists = Blueprint('artists', __name__)
 ## ------------------------------------ Working in Artist METHODS ------------------------------------------------------------------------------------
 
 # Get all artists from the DB -- WORKING !
-@artists.route('/GetAllartists', methods=['GET'])
+@artists.route('/getAllArtists', methods=['GET'])
 def get_artists():
     cursor = db.get_db().cursor()
     cursor.execute('SELECT * FROM Artist')
@@ -39,20 +39,19 @@ def get_artist(artistID):
 
 ## ------------------------------------ Working in Song METHODS ------------------------------------------------------------------------------------
 
-    # get the top 10 songs from a genre -- working but hardcoded
+    # get the top 10 songs from a genre -- working - surround the thunderclient var in ''
 @artists.route('/mostStreamed', methods=['GET'])
 def get_most_pop_songs():
     cursor = db.get_db().cursor()
+    genre_name = request.args.get('genre_name')
     query = '''
         SELECT SongTitle, NumStreams
         FROM Song s
             JOIN SongGenre sg on s.SongID = sg.SongID
             JOIN Genre g on sg.GenreID = g.GenreID
-        WHERE GenreName = 'Pop'
-        
-        ORDER BY NumStreams DESC
-        LIMIT 10
+        WHERE GenreName = 
     '''
+    query += str(genre_name)
     cursor.execute(query)
        # grab the column headers from the returned data
     column_headers = [x[0] for x in cursor.description]
@@ -74,10 +73,11 @@ def get_most_pop_songs():
 
 ## ------------------------------------ Working in Chart METHODS ------------------------------------------------------------------------------------
 
-# Get all the songs in a given chart -- working but hard coded
+# Get all the songs in a given chart -- working 
 @artists.route('/getChartSongs', methods=['GET'])
 def get_songs_chart():
     cursor = db.get_db().cursor()
+    chart_name = request.args.get('chart_name')
     query = '''
 Select SongTitle
         FROM Song s
@@ -85,7 +85,7 @@ Select SongTitle
             JOIN Chart c on sc.ChartID = c.ChartID
         WHERE ChartName =
 '''
-    query += "'Oricon'"
+    query += str(chart_name)
 
     cursor.execute(query)
        # grab the column headers from the returned data
@@ -154,6 +154,43 @@ def add_artist():
     db.get_db().commit()
     return 'Success'
 
+# add new song
+@artists.route('/newSong', methods=['POST'])
+def add_new_song():
+    the_data = request.json #request is the object created when this code is executed
+    current_app.logger.info(the_data)
+
+    # fields in app smith need to be named the exact same way in order for extraction to work
+    id_number = the_data['song_id']
+    title = the_data['song_title']
+    bpm = the_data['song_bpm']
+    danceability = the_data['song_danceability']
+    duration = the_data['song_duration']
+    num_streams = the_data['song_num_streams']
+    release_date = the_data['song_release_date']
+    albumID = the_data['song_album_id']
+
+
+    query = 'insert into songs (SongID, SongTitle, BPM, Danceability, Duration, NumStreams, Release Date, AlbumID) values ("'
+    query += id_number + '", "'
+    query += title + '", '
+    query += str(bpm) + ')'
+    query += str(danceability) + ')'
+    query += str(duration) + ')'
+    query += str(num_streams) + ')'
+    query += convert(varchar, release_date, 101) + '", '
+    query += str(albumID) + ')'
+
+    current_app.logger.info(query)
+
+    cursor = db.get_db().cursor()
+    cursor.execute(query)
+    db.get_db().commit()
+
+    return 'Success!'
+
+
+
 
 ## ------------------------------------ PUT METHODS ------------------------------------------------------------------------------------
 
@@ -169,7 +206,7 @@ def update_artist(artistID):
     return 'Success'
 
 
-# Add a new song to a specified playlist -- WORKING
+# Add a new song to a specified playlist -- WORKING but hard coded
 @artists.route('/addNewSongToPlaylist', methods=['PUT'])
 def add_new_song_to_playlist():
     the_data = request.json #request is the object created when this code is executed
@@ -205,10 +242,18 @@ def add_new_song_to_playlist():
 
 ## ------------------------------------ DELETE METHODS ------------------------------------------------------------------------------------
 
-# Delete an artist from the DB
+# Delete an artist from the DB -- working but codwd
 @artists.route('/DeleteArtist', methods=['DELETE'])
 def delete_artist():
     cursor = db.get_db().cursor()
     cursor.execute('DELETE FROM Artist WHERE ArtistID=102031')
+    db.get_db().commit()
+    return 'Success'
+
+# Delete an artist from the DB -- working but hard coded
+@artists.route('/DeleteSong', methods=['DELETE'])
+def delete_song():
+    cursor = db.get_db().cursor()
+    cursor.execute('DELETE FROM Song WHERE SongID=102031')
     db.get_db().commit()
     return 'Success'
