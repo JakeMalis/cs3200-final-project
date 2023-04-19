@@ -26,8 +26,8 @@ def get_region_tours():
     query = '''
         SELECT Name, DateAndTime
         FROM Tour t
-            JOIN TourRegion tr on t.SongID = tr.SongID
-            JOIN Region r on tr.GenreID = r.GenreID
+            JOIN TourRegion tr on t.TourID = tr.TourID
+            JOIN Region r on tr.RegionID = r.RegionID
         WHERE Country = 
     '''
     query += country
