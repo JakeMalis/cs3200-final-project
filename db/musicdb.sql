@@ -207,11 +207,11 @@ INSERT INTO Artist(ArtistID,LegalName,StageName,Age,Popularity,LabelID) VALUES (
 
 
 INSERT INTO Song (SongID, SongTitle, BPM, Danceability, Duration, NumStreams, ReleaseDate, AlbumID) VALUES
-(1, 'Song A', 120, 0.8, 3.5, 1000000, '2020-01-01', 1),
-(2, 'Song B', 100, 0.6, 4.2, 800000, '2019-05-15', 2),
-(3, 'Song C', 140, 0.9, 2.8, 500000, '2021-02-28', 3),
-(4, 'Song D', 80, 0.5, 5.1, 1200000, '2018-10-10', 2),
-(5, 'Song E', 160, 0.7, 3.9, 900000, '2022-03-20', 1);
+(1, 'Stacy', 120, 0.8, 3.5, 1000000, '2020-01-01', 1),
+(2, 'Daisy', 100, 0.6, 4.2, 800000, '2019-05-15', 2),
+(3, 'Rosalia', 140, 0.9, 2.8, 500000, '2021-02-28', 3),
+(4, 'Maria', 80, 0.5, 5.1, 1200000, '2018-10-10', 2),
+(5, 'Hello', 160, 0.7, 3.9, 900000, '2022-03-20', 1);
 
 INSERT INTO Song(SongID,SongTitle,BPM,Danceability,Duration,NumStreams,ReleaseDate,AlbumID) VALUES (6,'Gordan',46,64.03,9.55,629125914,'2022-10-31',4);
 INSERT INTO Song(SongID,SongTitle,BPM,Danceability,Duration,NumStreams,ReleaseDate,AlbumID) VALUES (7,'Marven',43,59.43,4.64,293653205,'2023-02-26',25);
@@ -317,7 +317,7 @@ INSERT INTO Album(AlbumID,AlbumTitle,ReleaseDate,NumTracks,Popularity) VALUES (5
 INSERT INTO Genre (GenreID, GenreName, Popularity) VALUES
 (1, 'Pop', 0.8),
 (2, 'Rock', 0.7),
-(3, 'Hip Hop', 0.6),
+(3, 'Hip-hop', 0.6),
 (4, 'Country', 0.5),
 (5, 'Electronic', 0.4);
 
@@ -509,53 +509,53 @@ INSERT INTO Chart (ChartID, ChartName) VALUES
 (2, 'UK Top 40'),
 (3, 'Oricon');
 
-INSERT INTO Chart(ChartID,ChartName) VALUES (4,'Jacobs, Rempel and Ebert');
+INSERT INTO Chart(ChartID,ChartName) VALUES (4,'Jacobs');
 INSERT INTO Chart(ChartID,ChartName) VALUES (5,'Johnston-Ondricka');
-INSERT INTO Chart(ChartID,ChartName) VALUES (6,'Schulist LLC');
+INSERT INTO Chart(ChartID,ChartName) VALUES (6,'Schulist-LLC');
 INSERT INTO Chart(ChartID,ChartName) VALUES (7,'Hammes-Buckridge');
-INSERT INTO Chart(ChartID,ChartName) VALUES (8,'Tromp, Yundt and Romaguera');
-INSERT INTO Chart(ChartID,ChartName) VALUES (9,'Nolan, Mraz and Jast');
+INSERT INTO Chart(ChartID,ChartName) VALUES (8,'Tromp');
+INSERT INTO Chart(ChartID,ChartName) VALUES (9,'Nolan');
 INSERT INTO Chart(ChartID,ChartName) VALUES (10,'Mitchell-Botsford');
-INSERT INTO Chart(ChartID,ChartName) VALUES (11,'Daniel and Sons');
-INSERT INTO Chart(ChartID,ChartName) VALUES (12,'Hansen, Yost and Ankunding');
-INSERT INTO Chart(ChartID,ChartName) VALUES (13,'Bauch, Heaney and Hane');
-INSERT INTO Chart(ChartID,ChartName) VALUES (14,'Hauck Inc');
+INSERT INTO Chart(ChartID,ChartName) VALUES (11,'Daniel');
+INSERT INTO Chart(ChartID,ChartName) VALUES (12,'Hansen');
+INSERT INTO Chart(ChartID,ChartName) VALUES (13,'Bauch');
+INSERT INTO Chart(ChartID,ChartName) VALUES (14,'Hauck-Inc');
 INSERT INTO Chart(ChartID,ChartName) VALUES (15,'Stanton-Anderson');
-INSERT INTO Chart(ChartID,ChartName) VALUES (16,'Kemmer, Crona and Hamill');
-INSERT INTO Chart(ChartID,ChartName) VALUES (17,'Hammes Group');
-INSERT INTO Chart(ChartID,ChartName) VALUES (18,'Welch Inc');
+INSERT INTO Chart(ChartID,ChartName) VALUES (16,'Kemmer');
+INSERT INTO Chart(ChartID,ChartName) VALUES (17,'Hammes-Group');
+INSERT INTO Chart(ChartID,ChartName) VALUES (18,'Welch-Inc');
 INSERT INTO Chart(ChartID,ChartName) VALUES (19,'Yundt-Kub');
-INSERT INTO Chart(ChartID,ChartName) VALUES (20,'Stoltenberg, Runolfsson and Stokes');
-INSERT INTO Chart(ChartID,ChartName) VALUES (21,'Turner Group');
-INSERT INTO Chart(ChartID,ChartName) VALUES (22,'Grimes, Weimann and Cassin');
+INSERT INTO Chart(ChartID,ChartName) VALUES (20,'Stokes');
+INSERT INTO Chart(ChartID,ChartName) VALUES (21,'Turner-Group');
+INSERT INTO Chart(ChartID,ChartName) VALUES (22,'Grimes');
 INSERT INTO Chart(ChartID,ChartName) VALUES (23,'Lubowitz-Stracke');
-INSERT INTO Chart(ChartID,ChartName) VALUES (24,'Zboncak Group');
-INSERT INTO Chart(ChartID,ChartName) VALUES (25,'Rolfson, Price and Schroeder');
-INSERT INTO Chart(ChartID,ChartName) VALUES (26,'Hamill, Schneider and O''Conner');
-INSERT INTO Chart(ChartID,ChartName) VALUES (27,'Thiel and Sons');
-INSERT INTO Chart(ChartID,ChartName) VALUES (28,'O''Hara-Schultz');
+INSERT INTO Chart(ChartID,ChartName) VALUES (24,'Zboncak-Group');
+INSERT INTO Chart(ChartID,ChartName) VALUES (25,'Rolfson');
+INSERT INTO Chart(ChartID,ChartName) VALUES (26,'Hamill');
+INSERT INTO Chart(ChartID,ChartName) VALUES (27,'Thiel-Sons');
+INSERT INTO Chart(ChartID,ChartName) VALUES (28,'Hara-Schultz');
 INSERT INTO Chart(ChartID,ChartName) VALUES (29,'Gislason-Stehr');
-INSERT INTO Chart(ChartID,ChartName) VALUES (30,'Corkery LLC');
+INSERT INTO Chart(ChartID,ChartName) VALUES (30,'Corkery-LLC');
 INSERT INTO Chart(ChartID,ChartName) VALUES (31,'Ledner-Krajcik');
-INSERT INTO Chart(ChartID,ChartName) VALUES (32,'Mertz, Bogisich and Upton');
-INSERT INTO Chart(ChartID,ChartName) VALUES (33,'Kutch, Hayes and Howell');
-INSERT INTO Chart(ChartID,ChartName) VALUES (34,'Emmerich Inc');
-INSERT INTO Chart(ChartID,ChartName) VALUES (35,'Bartell LLC');
-INSERT INTO Chart(ChartID,ChartName) VALUES (36,'Maggio, Greenholt and Sawayn');
-INSERT INTO Chart(ChartID,ChartName) VALUES (37,'Huels, Heaney and Wehner');
-INSERT INTO Chart(ChartID,ChartName) VALUES (38,'Ratke and Sons');
+INSERT INTO Chart(ChartID,ChartName) VALUES (32,'MertzUpton');
+INSERT INTO Chart(ChartID,ChartName) VALUES (33,'Kutch-Howell');
+INSERT INTO Chart(ChartID,ChartName) VALUES (34,'Emmerich-Inc');
+INSERT INTO Chart(ChartID,ChartName) VALUES (35,'Bartell-LLC');
+INSERT INTO Chart(ChartID,ChartName) VALUES (36,'Maggio-Sawayn');
+INSERT INTO Chart(ChartID,ChartName) VALUES (37,'Huels-Wehner');
+INSERT INTO Chart(ChartID,ChartName) VALUES (38,'Ratke-Sons');
 INSERT INTO Chart(ChartID,ChartName) VALUES (39,'Haag-Romaguera');
-INSERT INTO Chart(ChartID,ChartName) VALUES (40,'Jacobson Inc');
-INSERT INTO Chart(ChartID,ChartName) VALUES (41,'Cassin, Balistreri and Renner');
-INSERT INTO Chart(ChartID,ChartName) VALUES (42,'Gerhold Group');
-INSERT INTO Chart(ChartID,ChartName) VALUES (43,'Ankunding, Bode and Bruen');
-INSERT INTO Chart(ChartID,ChartName) VALUES (44,'Bogisich and Sons');
-INSERT INTO Chart(ChartID,ChartName) VALUES (45,'Hessel-O''Hara');
+INSERT INTO Chart(ChartID,ChartName) VALUES (40,'Jacobson-Inc');
+INSERT INTO Chart(ChartID,ChartName) VALUES (41,'Cassin');
+INSERT INTO Chart(ChartID,ChartName) VALUES (42,'Gerhold-Group');
+INSERT INTO Chart(ChartID,ChartName) VALUES (43,'Ankunding');
+INSERT INTO Chart(ChartID,ChartName) VALUES (44,'Bogisich-Sons');
+INSERT INTO Chart(ChartID,ChartName) VALUES (45,'Hesse-Hara');
 INSERT INTO Chart(ChartID,ChartName) VALUES (46,'Wolff-Borer');
-INSERT INTO Chart(ChartID,ChartName) VALUES (47,'Lehner, Block and Feest');
+INSERT INTO Chart(ChartID,ChartName) VALUES (47,'Lehner-Feest');
 INSERT INTO Chart(ChartID,ChartName) VALUES (48,'Rempel-Carroll');
-INSERT INTO Chart(ChartID,ChartName) VALUES (49,'Koch Inc');
-INSERT INTO Chart(ChartID,ChartName) VALUES (50,'Kreiger Inc');
+INSERT INTO Chart(ChartID,ChartName) VALUES (49,'Koch-Inc');
+INSERT INTO Chart(ChartID,ChartName) VALUES (50,'Kreiger-Inc');
 
 
 INSERT INTO SongChart (ChartID, SongID) VALUES
