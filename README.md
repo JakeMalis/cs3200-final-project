@@ -1,6 +1,8 @@
 # CS 3200 Final Project - Sound of Melodies
 
-The Sound of Melodies is an application built for music listeners, artists, and music labels to gather information about the songs, artists, and producers that they listen to. For example, users can learn about tours from their favorite artist, add songs to playlists, or find the most popular songs in the genre of their choice. Additionally, Labels can manage artist's merchandise, social media, and more. 
+[Click here to watch a demo of the app](https://youtu.be/QM1tejBfvro)
+
+The Sound of Melodies is an application built for music listeners, artists, and music labels to gather information about the songs, artists, and producers that they listen to. For example, users can learn about tours from their favorite artist, add songs to playlists, or find the most popular songs in the genre of their choice. Additionally, Labels can manage artist's merchandise, social media, and more.
 
 This project was built in Python, using the Flask framework. A user interface was built and deployed using AppSmith, and a MySQL database hosted on Docker holds all the data that the application utilizes. 
 
